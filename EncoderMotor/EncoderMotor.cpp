@@ -1,12 +1,13 @@
+//====== LIBRARIES =====
 #include "EncoderMotor.h"
 #include <Arduino.h>
 
-EncoderMotor *classEncoder;
-
+//===== VARIABLES ======
 int phase = 0;
 int interrupt = 255;
 bool isRunning = false;
 
+//===== CLASS WITH ENABLE =====
 EncoderMotor::EncoderMotor(int bridgeA, int bridgeB, int enablePin){
   classEncoder = this;
   _rotateSpeed = 255;
@@ -23,6 +24,7 @@ EncoderMotor::EncoderMotor(int bridgeA, int bridgeB, int enablePin){
   
 }
 
+//===== CLASS WITHOUT ENABLE =====
 EncoderMotor::EncoderMotor(int bridgeA, int bridgeB){
   classEncoder = this;
   _rotateSpeed = 255;
@@ -30,11 +32,12 @@ EncoderMotor::EncoderMotor(int bridgeA, int bridgeB){
   _bridgeA = bridgeA;
   _bridgeB = bridgeB;
   
-  pinMode(classEncoder->_bridgeA,  OUTPUT);
-  pinMode(classEncoder->_bridgeB, OUTPUT);
+  pinMode(_bridgeA,  OUTPUT);
+  pinMode(_bridgeB, OUTPUT);
 
 }
 
+//===== DIRECTION =====
 static void EncoderMotor::Direction(String rotateDirection){
   _rotateDirection = rotateDirection;
   if(_rotateDirection == "CCW"){
@@ -47,11 +50,12 @@ static void EncoderMotor::Direction(String rotateDirection){
 
   }
   if(isRunning){
-    digitalWrite(classEncoder->_bridgeA, phase);
-    analogWrite(classEncoder->_bridgeB, interrupt); 
+    digitalWrite(_bridgeA, phase);
+    analogWrite(_bridgeB, interrupt); 
   }
 }
 
+//===== SPEED ======
 static void EncoderMotor::Speed(int rotateSpeed){
   _rotateSpeed = rotateSpeed;
   if(_rotateDirection == "CCW"){
@@ -62,20 +66,22 @@ static void EncoderMotor::Speed(int rotateSpeed){
     interrupt = 255 - _rotateSpeed;
   }
   if(isRunning){
-    digitalWrite(classEncoder->_bridgeA, phase);
-    analogWrite(classEncoder->_bridgeB, interrupt); 
+    digitalWrite(_bridgeA, phase);
+    analogWrite(_bridgeB, interrupt); 
   }
 }
 
+//===== START =====
 static void EncoderMotor::Start(void){
-  digitalWrite(classEncoder->_bridgeA, phase);
-  analogWrite(classEncoder->_bridgeB, interrupt);
+  digitalWrite(_bridgeA, phase);
+  analogWrite(_bridgeB, interrupt);
   isRunning = true;
 
 }
 
+//===== STOP =====
 static void EncoderMotor::Stop(void){
-  digitalWrite(classEncoder->_bridgeA, LOW);
-  digitalWrite(classEncoder->_bridgeB, LOW);
+  digitalWrite(_bridgeA, LOW);
+  digitalWrite(_bridgeB, LOW);
   isRunning = false;
 }
