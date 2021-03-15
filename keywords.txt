@@ -1,0 +1,14 @@
+###################################
+# Datatypes (KEYWORD1)            #
+###################################
+
+EncoderMotor	KEYWORD1
+
+###################################
+# Methods and Functions (KEYWORD2)#
+###################################
+
+Start	KEYWORD2
+Stop	KEYWORD2
+Direction	KEYWORD2
+Speed	KEYWORD2
