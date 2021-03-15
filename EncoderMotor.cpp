@@ -9,7 +9,6 @@ bool isRunning = false;
 
 //===== CLASS WITH ENABLE =====
 EncoderMotor::EncoderMotor(int bridgeA, int bridgeB, int enablePin){
-  classEncoder = this;
   _rotateSpeed = 255;
   
   _bridgeA = bridgeA;
@@ -26,7 +25,6 @@ EncoderMotor::EncoderMotor(int bridgeA, int bridgeB, int enablePin){
 
 //===== CLASS WITHOUT ENABLE =====
 EncoderMotor::EncoderMotor(int bridgeA, int bridgeB){
-  classEncoder = this;
   _rotateSpeed = 255;
   
   _bridgeA = bridgeA;
