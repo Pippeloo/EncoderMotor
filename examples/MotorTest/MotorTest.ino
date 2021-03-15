@@ -7,7 +7,7 @@
 #define M1_A2    5
 
 //===== MOTOR OUTPUT PINS =====
-EncoderMotor motor(4, 5, 7);
+EncoderMotor motor(M1_A1, M1_A2, M1_ENABLE);
 
 //===== SETUP =====
 void setup() {
