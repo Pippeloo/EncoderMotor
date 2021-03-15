@@ -15,7 +15,7 @@ These are the components that I used
 | `EncoderMotor motor1(n, p)` | Initialize the motor, where 'n' is a regular pin, 'p' a pwm pin. These are both `int` types
 | Functions |  |
 | `Start()`   | Start the motor (default clockwise with max speed). |
-| `Stop()`   | Stop the motor (Sets the pins to `LOW`|
+| `Stop()`   | Stop the motor (Sets the pins to `LOW`)|
 | `Speed(value)` | Set the speed of the motor. `value` can be 0-255. The Speed wil always update when executed, even if the motor is running! `value` is an `int` type. |
 | `Direction(value)` | Defines the rotation direction of the motor. `value` can be `CW` or `CCW` and is a `String` type.|
 
